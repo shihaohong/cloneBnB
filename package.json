@@ -1,0 +1,20 @@
+{
+  "name": "clonebnb",
+  "version": "1.0.0",
+  "description": "a clone of airbnb implemented in microservice format",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shihaohong/cloneBnB.git"
+  },
+  "author": "shihaohong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shihaohong/cloneBnB/issues"
+  },
+  "homepage": "https://github.com/shihaohong/cloneBnB#readme",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
+}
