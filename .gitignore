@@ -1,2 +1,8 @@
 node_modules
+
+# configs
 config.js
+
+# csv files
+db/reviews.csv
+db/users.csv
