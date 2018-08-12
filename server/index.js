@@ -3,6 +3,8 @@ const { getReviews } = require('../db/index.js');
 
 const app = express();
 
+app.use(express.static('public'));
+
 app.get('/reviews/:id', (req, res) => {
   const listingId = req.params.id;
   getReviews(listingId, (err, results) => {
