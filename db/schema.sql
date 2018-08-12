@@ -10,10 +10,19 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
+-- LISTINGS TABLE
+CREATE TABLE listings (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
 -- REVIEWS TABLE
 CREATE TABLE reviews (
   id INT NOT NULL AUTO_INCREMENT,
   user_id INT NOT NULL,
+  listing_id INT NOT NULL,
   date DATETIME NOT NULL,
   review_body VARCHAR(500) NOT NULL,
   accuracy INT NOT NULL,
@@ -23,11 +32,18 @@ CREATE TABLE reviews (
   checkin INT NOT NULL,
   value INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (listing_id) REFERENCES listings(id)
 );
 
 LOAD DATA LOCAL INFILE './db/users.csv'
     INTO TABLE users
+    FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE './db/listings.csv'
+    INTO TABLE listings
     FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
@@ -37,5 +53,3 @@ LOAD DATA LOCAL INFILE './db/reviews.csv'
     FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES
-
-

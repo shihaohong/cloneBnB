@@ -1,6 +1,11 @@
 const faker = require('faker');
 const { writeFile } = require('fs');
 
+// HELPER FUNCTIONS
+const generateFiveStarReview = () => Math.floor((Math.random() * 5) + 1);
+const integerGenerator = n => Math.floor((Math.random() * n) + 1);
+
+// CSV GENERATION FUNCTIONS
 const generateUserCSV = (numberOfEntries) => {
   let userCsvData = 'id,username,user_image\n';
 
@@ -21,13 +26,33 @@ const generateUserCSV = (numberOfEntries) => {
   });
 };
 
+const generateListingCSV = (numberOfEntries) => {
+  let listingsCsvData = 'id,user_id\n';
+  for (let i = 0; i < numberOfEntries; i += 1) {
+    const listingId = i + 1;
+    const userId = integerGenerator(10);
+
+    listingsCsvData += `${listingId},${userId}\n`;
+  }
+
+  writeFile(`${__dirname}/listings.csv`, listingsCsvData, (err) => {
+    if (err) {
+      console.log('could not create listings.csv');
+      return;
+    }
+
+    console.log('listings.csv was successfully generated');
+  });
+};
+
+
 const generateReviewCSV = (numberOfEntries) => {
-  let reviewsCsvData = 'id,user_id,date,review_body,accuracy,communication,cleanliness,location,checkin,value\n';
-  const generateFiveStarReview = () => Math.floor((Math.random() * 5) + 1);
+  let reviewsCsvData = 'id,user_id,listing_id,date,review_body,accuracy,communication,cleanliness,location,checkin,value\n';
 
   for (let i = 0; i < numberOfEntries; i += 1) {
     const reviewId = i + 1;
-    const userId = Math.floor((Math.random() * 9) + 1);
+    const userId = integerGenerator(9);
+    const listingId = integerGenerator(10);
     const date = faker.fake('{{date.past}}');
     const formattedDate = new Date(date).toISOString();
     const reviewBody = faker.fake('{{lorem.paragraph}}');
@@ -40,6 +65,7 @@ const generateReviewCSV = (numberOfEntries) => {
 
     reviewsCsvData += `${reviewId},\
 ${userId},\
+${listingId},\
 ${formattedDate},\
 "${reviewBody}",\
 ${accuracy},\
@@ -60,5 +86,6 @@ ${value}\n`;
   });
 };
 
+generateListingCSV(10);
 generateUserCSV(10);
 generateReviewCSV(100);

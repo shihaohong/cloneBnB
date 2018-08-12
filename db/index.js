@@ -12,3 +12,17 @@ connection.connect((err) => {
 
   console.log(`connected as id ${connection.threadId}`);
 });
+
+const getReviews = (listingId, callback) => {
+  connection.query('SELECT * FROM reviews WHERE listing_id = ?', [listingId], (err, results) => {
+    if (err) {
+      return callback(err, null);
+    }
+
+    return callback(null, results);
+  });
+};
+
+module.exports = {
+  getReviews,
+};

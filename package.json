@@ -4,6 +4,7 @@
   "description": "a clone of airbnb implemented in microservice format",
   "main": "index.js",
   "scripts": {
+    "server:test": "nodemon ./server/index.js",
     "csv:generate": "node ./db/generateCsv.js",
     "db:seed": "mysql -u root < ./db/schema.sql",
     "db:genseed": "node ./db/generateCsv.js && mysql -u root < ./db/schema.sql"
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/shihaohong/cloneBnB#readme",
   "dependencies": {
+    "express": "^4.16.3",
     "faker": "^4.1.0",
     "mysql": "^2.16.0"
   },
@@ -27,6 +29,7 @@
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0"
+    "eslint-plugin-react": "^7.10.0",
+    "nodemon": "^1.18.3"
   }
 }

@@ -4,5 +4,6 @@ node_modules
 config.js
 
 # csv files
-db/reviews.csv
 db/users.csv
+db/listings.csv
+db/reviews.csv
