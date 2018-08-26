@@ -15,8 +15,16 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react'],
+            plugins: ['babel-plugin-styled-components'],
           },
         },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
       },
     ],
   },
