@@ -13,14 +13,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/reviews/2')
+    axios.get('/reviews/2') // TODO: remove hard-coded 2 and set to proper listing id
       .then(({ data }) => {
         this.setState({
           reviews: data,
         });
-      })
-      .catch(err => {
-        console.error('failed', err);
       });
   }
 
@@ -32,9 +29,6 @@ class App extends React.Component {
         <ReviewHeader
           reviews={reviews}
         />
-        <p>
-          This is my first paragraph.
-        </p>
       </div>
     );
   }
