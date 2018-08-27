@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const SingleStar = styled.span`
   height: ${({ starSize }) => starSize}px;
@@ -31,6 +32,7 @@ const FiveStarBottom = styled.span`
   width: 100%;
   display: inline-block;
   color: #D8D8D8;
+  position: absolute;
   z-index: 0;
 `;
 
@@ -42,6 +44,7 @@ const FiveStar = ({ averageRating, starSize }) => {
       fiveStarComponents.push(
         <SingleStar
           starSize={starSize}
+          key={i}
         >
         ★
         </SingleStar>,
@@ -68,6 +71,11 @@ const FiveStar = ({ averageRating, starSize }) => {
       </FiveStarBottom>
     </FiveStarSpan>
   );
+};
+
+FiveStar.propTypes = {
+  averageRating: PropTypes.string.isRequired,
+  starSize: PropTypes.number.isRequired,
 };
 
 export default FiveStar;

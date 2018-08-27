@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import FiveStar from './FiveStar';
 
@@ -75,5 +76,9 @@ class ReviewHeader extends React.Component {
     );
   }
 }
+
+ReviewHeader.propTypes = {
+  reviews: PropTypes.instanceOf(Array).isRequired,
+};
 
 export default ReviewHeader;

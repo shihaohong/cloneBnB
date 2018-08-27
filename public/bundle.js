@@ -21766,6 +21766,10 @@ var _styledComponents = __webpack_require__(51);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
+var _propTypes = __webpack_require__(55);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _FiveStar = __webpack_require__(60);
 
 var _FiveStar2 = _interopRequireDefault(_FiveStar);
@@ -21861,6 +21865,10 @@ var ReviewHeader = function (_React$Component) {
 
   return ReviewHeader;
 }(_react2.default.Component);
+
+ReviewHeader.propTypes = {
+  reviews: _propTypes2.default.instanceOf(Array).isRequired
+};
 
 exports.default = ReviewHeader;
 
@@ -26857,6 +26865,10 @@ var _styledComponents = __webpack_require__(51);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
+var _propTypes = __webpack_require__(55);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SingleStar = _styledComponents2.default.span.withConfig({
@@ -26894,7 +26906,7 @@ var FiveStarTop = _styledComponents2.default.span.withConfig({
 
 var FiveStarBottom = _styledComponents2.default.span.withConfig({
   displayName: 'FiveStar__FiveStarBottom'
-})(['height:', 'px;width:100%;display:inline-block;color:#D8D8D8;z-index:0;'], function (_ref8) {
+})(['height:', 'px;width:100%;display:inline-block;color:#D8D8D8;position:absolute;z-index:0;'], function (_ref8) {
   var starSize = _ref8.starSize;
   return starSize + 6;
 });
@@ -26910,7 +26922,8 @@ var FiveStar = function FiveStar(_ref9) {
       fiveStarComponents.push(_react2.default.createElement(
         SingleStar,
         {
-          starSize: starSize
+          starSize: starSize,
+          key: i
         },
         '\u2605'
       ));
@@ -26940,6 +26953,11 @@ var FiveStar = function FiveStar(_ref9) {
       generateFiveStars()
     )
   );
+};
+
+FiveStar.propTypes = {
+  averageRating: _propTypes2.default.string.isRequired,
+  starSize: _propTypes2.default.number.isRequired
 };
 
 exports.default = FiveStar;
