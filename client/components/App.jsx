@@ -23,11 +23,13 @@ class App extends React.Component {
 
   render() {
     const { reviews } = this.state;
+    const widgetWidth = 650;
 
     return (
       <div>
         <ReviewHeader
           reviews={reviews}
+          widgetWidth={widgetWidth}
         />
       </div>
     );

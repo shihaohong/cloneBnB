@@ -19969,12 +19969,14 @@ var App = function (_React$Component) {
     value: function render() {
       var reviews = this.state.reviews;
 
+      var widgetWidth = 650;
 
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(_ReviewHeader2.default, {
-          reviews: reviews
+          reviews: reviews,
+          widgetWidth: widgetWidth
         })
       );
     }
@@ -21774,6 +21776,10 @@ var _FiveStar = __webpack_require__(60);
 
 var _FiveStar2 = _interopRequireDefault(_FiveStar);
 
+var _ReviewCriteriaAverage = __webpack_require__(61);
+
+var _ReviewCriteriaAverage2 = _interopRequireDefault(_ReviewCriteriaAverage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21784,15 +21790,28 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Wrapper = _styledComponents2.default.section.withConfig({
   displayName: 'ReviewHeader__Wrapper'
-})(['margin-left:120px;padding:24px;background:papayawhip;width:650px;height:180px;']);
+})(['margin-left:120px;padding:24px;background:papayawhip;width:', 'px;height:180px;'], function (_ref) {
+  var widgetWidth = _ref.widgetWidth;
+  return widgetWidth;
+});
 
 var ReviewHeading = _styledComponents2.default.h2.withConfig({
   displayName: 'ReviewHeader__ReviewHeading'
-})(['color:#484848;font-weight:bold;']);
+})(['border-bottom:1px solid #EBEBEB !important;color:#484848;font-weight:bold;']);
 
 var LeftSideHeader = _styledComponents2.default.div.withConfig({
   displayName: 'ReviewHeader__LeftSideHeader'
-})(['background:white;width:426px;height:56px;']);
+})(['background:white;display:inline-block;width:', 'px;height:56px;'], function (_ref2) {
+  var widgetWidth = _ref2.widgetWidth;
+  return widgetWidth * 0.65;
+});
+
+var RightSideHeader = _styledComponents2.default.div.withConfig({
+  displayName: 'ReviewHeader__RightSideHeader'
+})(['background:white;display:inline-block;position:absolute;width:', 'px;height:56px;'], function (_ref3) {
+  var widgetWidth = _ref3.widgetWidth;
+  return widgetWidth * 0.35;
+});
 
 var AverageReview = _styledComponents2.default.span.withConfig({
   displayName: 'ReviewHeader__AverageReview'
@@ -21834,20 +21853,26 @@ var ReviewHeader = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var reviews = this.props.reviews;
+      var _props = this.props,
+          reviews = _props.reviews,
+          widgetWidth = _props.widgetWidth;
 
       var averageRating = this.calculateAverageStarRating();
       var numReviews = reviews.length + ' Reviews';
 
       return _react2.default.createElement(
         Wrapper,
-        null,
+        {
+          widgetWidth: widgetWidth
+        },
         _react2.default.createElement(
           ReviewHeading,
           null,
           _react2.default.createElement(
             LeftSideHeader,
-            null,
+            {
+              widgetWidth: widgetWidth
+            },
             _react2.default.createElement(
               AverageReview,
               null,
@@ -21857,8 +21882,14 @@ var ReviewHeader = function (_React$Component) {
               averageRating: averageRating,
               starSize: 18
             })
-          )
-        )
+          ),
+          _react2.default.createElement(RightSideHeader, {
+            widgetWidth: widgetWidth
+          })
+        ),
+        _react2.default.createElement(_ReviewCriteriaAverage2.default, {
+          widgetWidth: widgetWidth
+        })
       );
     }
   }]);
@@ -26961,6 +26992,71 @@ FiveStar.propTypes = {
 };
 
 exports.default = FiveStar;
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = __webpack_require__(51);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _propTypes = __webpack_require__(55);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Wrapper = _styledComponents2.default.div.withConfig({
+  displayName: 'ReviewCriteriaAverage__Wrapper'
+})(['height:105px;width:', 'px;'], function (_ref) {
+  var widgetWidth = _ref.widgetWidth;
+  return widgetWidth;
+});
+
+var ReviewCriteriaAverage = function (_React$Component) {
+  _inherits(ReviewCriteriaAverage, _React$Component);
+
+  function ReviewCriteriaAverage(props) {
+    _classCallCheck(this, ReviewCriteriaAverage);
+
+    return _possibleConstructorReturn(this, (ReviewCriteriaAverage.__proto__ || Object.getPrototypeOf(ReviewCriteriaAverage)).call(this, props));
+  }
+
+  _createClass(ReviewCriteriaAverage, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        'Will contain more average rating information'
+      );
+    }
+  }]);
+
+  return ReviewCriteriaAverage;
+}(_react2.default.Component);
+
+exports.default = ReviewCriteriaAverage;
 
 /***/ })
 /******/ ]);
