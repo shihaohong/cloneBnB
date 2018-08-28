@@ -19,7 +19,7 @@ const FiveStarSpan = styled.span`
 
 const FiveStarTop = styled.span`
   height: ${({ starSize }) => starSize + 6}px;
-  width: ${({ width }) => width};
+  width: ${({ width }) => width}%;
   display: inline-block;
   color: #008489;
   position: absolute;
