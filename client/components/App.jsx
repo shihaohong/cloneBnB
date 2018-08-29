@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import ReviewHeader from './ReviewHeader';
+import ReviewsHeader from './ReviewsHeader';
 import ReviewsList from './ReviewsList';
 
 class App extends React.Component {
@@ -28,7 +28,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <ReviewHeader
+        <ReviewsHeader
           reviews={reviews}
           widgetWidth={widgetWidth}
         />

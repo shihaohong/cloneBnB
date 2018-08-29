@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import ReviewEntryHeader from './ReviewEntryHeader';
 
 const Wrapper = styled.section`
+  -webkit-font-smoothing: antialiased;
+  color: #484848;
   margin-left: 120px;
   padding: 24px;
   width: ${({ widgetWidth }) => widgetWidth}px;

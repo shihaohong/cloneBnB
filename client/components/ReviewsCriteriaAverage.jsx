@@ -17,7 +17,7 @@ const CriteriaItem = styled.div`
   color: #484848;
 `;
 
-const ReviewCriteriaAverage = ({ averageCriteriaRatings }) => {
+const ReviewsCriteriaAverage = ({ averageCriteriaRatings }) => {
   const {
     accuracy,
     checkin,
@@ -75,7 +75,7 @@ const ReviewCriteriaAverage = ({ averageCriteriaRatings }) => {
   );
 };
 
-ReviewCriteriaAverage.propTypes = {
+ReviewsCriteriaAverage.propTypes = {
   averageCriteriaRatings: PropTypes.shape({
     accuracy: PropTypes.string.isRequired,
     checkin: PropTypes.string.isRequired,
@@ -86,4 +86,4 @@ ReviewCriteriaAverage.propTypes = {
   }).isRequired,
 };
 
-export default ReviewCriteriaAverage;
+export default ReviewsCriteriaAverage;

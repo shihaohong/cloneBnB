@@ -3,19 +3,19 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import FiveStar from './FiveStar';
-import ReviewCriteriaAverage from './ReviewCriteriaAverage';
+import ReviewsCriteriaAverage from './ReviewsCriteriaAverage';
 
 const Wrapper = styled.section`
   -webkit-font-smoothing: antialiased;
+  color: #484848;
   margin-left: 120px;
   padding: 24px;
   width: ${({ widgetWidth }) => widgetWidth}px;
   height: 180px;
 `;
 
-const ReviewHeading = styled.h2`
+const ReviewsHeading = styled.h2`
   border-bottom: 1px solid #EBEBEB !important;
-  color: #484848;
   font-weight: bold;
 `;
 
@@ -37,7 +37,7 @@ const AverageReview = styled.span`
   display: inline-block;
 `;
 
-class ReviewHeader extends React.Component {
+class ReviewsHeader extends React.Component {
   constructor(props) {
     super(props);
 
@@ -103,7 +103,7 @@ class ReviewHeader extends React.Component {
       <Wrapper
         widgetWidth={widgetWidth}
       >
-        <ReviewHeading>
+        <ReviewsHeading>
           <LeftSideHeader
             widgetWidth={widgetWidth}
           >
@@ -118,8 +118,8 @@ class ReviewHeader extends React.Component {
           <RightSideHeader
             widgetWidth={widgetWidth}
           />
-        </ReviewHeading>
-        <ReviewCriteriaAverage
+        </ReviewsHeading>
+        <ReviewsCriteriaAverage
           averageCriteriaRatings={averageCriteriaRatings}
           widgetWidth={widgetWidth}
         />
@@ -128,9 +128,9 @@ class ReviewHeader extends React.Component {
   }
 }
 
-ReviewHeader.propTypes = {
+ReviewsHeader.propTypes = {
   reviews: PropTypes.instanceOf(Array).isRequired,
   widgetWidth: PropTypes.number.isRequired,
 };
 
-export default ReviewHeader;
+export default ReviewsHeader;

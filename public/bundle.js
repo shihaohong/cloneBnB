@@ -19924,9 +19924,9 @@ var _axios = __webpack_require__(23);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _ReviewHeader = __webpack_require__(50);
+var _ReviewsHeader = __webpack_require__(50);
 
-var _ReviewHeader2 = _interopRequireDefault(_ReviewHeader);
+var _ReviewsHeader2 = _interopRequireDefault(_ReviewsHeader);
 
 var _ReviewsList = __webpack_require__(62);
 
@@ -19978,7 +19978,7 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_ReviewHeader2.default, {
+        _react2.default.createElement(_ReviewsHeader2.default, {
           reviews: reviews,
           widgetWidth: widgetWidth
         }),
@@ -21783,9 +21783,9 @@ var _FiveStar = __webpack_require__(60);
 
 var _FiveStar2 = _interopRequireDefault(_FiveStar);
 
-var _ReviewCriteriaAverage = __webpack_require__(61);
+var _ReviewsCriteriaAverage = __webpack_require__(61);
 
-var _ReviewCriteriaAverage2 = _interopRequireDefault(_ReviewCriteriaAverage);
+var _ReviewsCriteriaAverage2 = _interopRequireDefault(_ReviewsCriteriaAverage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21796,48 +21796,48 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Wrapper = _styledComponents2.default.section.withConfig({
-  displayName: 'ReviewHeader__Wrapper'
-})(['-webkit-font-smoothing:antialiased;margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
+  displayName: 'ReviewsHeader__Wrapper'
+})(['-webkit-font-smoothing:antialiased;color:#484848;margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
   var widgetWidth = _ref.widgetWidth;
   return widgetWidth;
 });
 
-var ReviewHeading = _styledComponents2.default.h2.withConfig({
-  displayName: 'ReviewHeader__ReviewHeading'
-})(['border-bottom:1px solid #EBEBEB !important;color:#484848;font-weight:bold;']);
+var ReviewsHeading = _styledComponents2.default.h2.withConfig({
+  displayName: 'ReviewsHeader__ReviewsHeading'
+})(['border-bottom:1px solid #EBEBEB !important;font-weight:bold;']);
 
 var LeftSideHeader = _styledComponents2.default.div.withConfig({
-  displayName: 'ReviewHeader__LeftSideHeader'
+  displayName: 'ReviewsHeader__LeftSideHeader'
 })(['display:inline-block;width:', 'px;height:56px;'], function (_ref2) {
   var widgetWidth = _ref2.widgetWidth;
   return widgetWidth * 0.65;
 });
 
 var RightSideHeader = _styledComponents2.default.div.withConfig({
-  displayName: 'ReviewHeader__RightSideHeader'
+  displayName: 'ReviewsHeader__RightSideHeader'
 })(['display:inline-block;position:absolute;width:', 'px;height:56px;'], function (_ref3) {
   var widgetWidth = _ref3.widgetWidth;
   return widgetWidth * 0.35;
 });
 
 var AverageReview = _styledComponents2.default.span.withConfig({
-  displayName: 'ReviewHeader__AverageReview'
+  displayName: 'ReviewsHeader__AverageReview'
 })(['height:50px;display:inline-block;']);
 
-var ReviewHeader = function (_React$Component) {
-  _inherits(ReviewHeader, _React$Component);
+var ReviewsHeader = function (_React$Component) {
+  _inherits(ReviewsHeader, _React$Component);
 
-  function ReviewHeader(props) {
-    _classCallCheck(this, ReviewHeader);
+  function ReviewsHeader(props) {
+    _classCallCheck(this, ReviewsHeader);
 
-    var _this = _possibleConstructorReturn(this, (ReviewHeader.__proto__ || Object.getPrototypeOf(ReviewHeader)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (ReviewsHeader.__proto__ || Object.getPrototypeOf(ReviewsHeader)).call(this, props));
 
     _this.calculateAverageTotalStarRating = _this.calculateAverageTotalStarRating.bind(_this);
     _this.calculateAverageCriteriaStarRating = _this.calculateAverageCriteriaStarRating.bind(_this);
     return _this;
   }
 
-  _createClass(ReviewHeader, [{
+  _createClass(ReviewsHeader, [{
     key: 'calculateAverageTotalStarRating',
     value: function calculateAverageTotalStarRating() {
       var categories = ['accuracy', 'communication', 'cleanliness', 'location', 'checkin', 'value'];
@@ -21906,7 +21906,7 @@ var ReviewHeader = function (_React$Component) {
           widgetWidth: widgetWidth
         },
         _react2.default.createElement(
-          ReviewHeading,
+          ReviewsHeading,
           null,
           _react2.default.createElement(
             LeftSideHeader,
@@ -21927,7 +21927,7 @@ var ReviewHeader = function (_React$Component) {
             widgetWidth: widgetWidth
           })
         ),
-        _react2.default.createElement(_ReviewCriteriaAverage2.default, {
+        _react2.default.createElement(_ReviewsCriteriaAverage2.default, {
           averageCriteriaRatings: averageCriteriaRatings,
           widgetWidth: widgetWidth
         })
@@ -21935,15 +21935,15 @@ var ReviewHeader = function (_React$Component) {
     }
   }]);
 
-  return ReviewHeader;
+  return ReviewsHeader;
 }(_react2.default.Component);
 
-ReviewHeader.propTypes = {
+ReviewsHeader.propTypes = {
   reviews: _propTypes2.default.instanceOf(Array).isRequired,
   widgetWidth: _propTypes2.default.number.isRequired
 };
 
-exports.default = ReviewHeader;
+exports.default = ReviewsHeader;
 
 /***/ }),
 /* 51 */
@@ -27065,17 +27065,17 @@ var _FiveStar2 = _interopRequireDefault(_FiveStar);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Wrapper = _styledComponents2.default.div.withConfig({
-  displayName: 'ReviewCriteriaAverage__Wrapper'
+  displayName: 'ReviewsCriteriaAverage__Wrapper'
 })(['display:grid;grid-template-columns:162px 162px 162px 162px;grid-template-rows:35px 35px 35px;height:105px;width:', 'px;'], function (_ref) {
   var widgetWidth = _ref.widgetWidth;
   return widgetWidth;
 });
 
 var CriteriaItem = _styledComponents2.default.div.withConfig({
-  displayName: 'ReviewCriteriaAverage__CriteriaItem'
+  displayName: 'ReviewsCriteriaAverage__CriteriaItem'
 })(['font-size:16px;color:#484848;']);
 
-var ReviewCriteriaAverage = function ReviewCriteriaAverage(_ref2) {
+var ReviewsCriteriaAverage = function ReviewsCriteriaAverage(_ref2) {
   var averageCriteriaRatings = _ref2.averageCriteriaRatings;
   var accuracy = averageCriteriaRatings.accuracy,
       checkin = averageCriteriaRatings.checkin,
@@ -27145,7 +27145,7 @@ var ReviewCriteriaAverage = function ReviewCriteriaAverage(_ref2) {
   );
 };
 
-ReviewCriteriaAverage.propTypes = {
+ReviewsCriteriaAverage.propTypes = {
   averageCriteriaRatings: _propTypes2.default.shape({
     accuracy: _propTypes2.default.string.isRequired,
     checkin: _propTypes2.default.string.isRequired,
@@ -27156,7 +27156,7 @@ ReviewCriteriaAverage.propTypes = {
   }).isRequired
 };
 
-exports.default = ReviewCriteriaAverage;
+exports.default = ReviewsCriteriaAverage;
 
 /***/ }),
 /* 62 */
@@ -27189,7 +27189,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Wrapper = _styledComponents2.default.section.withConfig({
   displayName: 'ReviewsList__Wrapper'
-})(['margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
+})(['-webkit-font-smoothing:antialiased;color:#484848;margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
   var widgetWidth = _ref.widgetWidth;
   return widgetWidth;
 });
