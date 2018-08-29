@@ -6,6 +6,7 @@ import FiveStar from './FiveStar';
 import ReviewCriteriaAverage from './ReviewCriteriaAverage';
 
 const Wrapper = styled.section`
+  -webkit-font-smoothing: antialiased;
   margin-left: 120px;
   padding: 24px;
   width: ${({ widgetWidth }) => widgetWidth}px;
