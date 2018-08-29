@@ -27261,10 +27261,9 @@ ReviewEntryHeader.propTypes = {
     cleanliness: _propTypes2.default.number.isRequired,
     communication: _propTypes2.default.number.isRequired,
     date: _propTypes2.default.string.isRequired,
-    listing_id: _propTypes2.default.number.isRequired,
     location: _propTypes2.default.number.isRequired,
-    review_body: _propTypes2.default.string.isRequired,
-    user_id: _propTypes2.default.number.isRequired,
+    reviewBody: _propTypes2.default.string.isRequired,
+    userId: _propTypes2.default.number.isRequired,
     value: _propTypes2.default.number.isRequired
   }).isRequired
 };
