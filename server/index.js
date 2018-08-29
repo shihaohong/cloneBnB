@@ -6,7 +6,7 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('/reviews/:listingId', (req, res) => {
-  const { listingId } = req.params.listingId;
+  const { listingId } = req.params;
   getReviews(listingId, (err, results) => {
     if (err) {
       console.log('err', err);
