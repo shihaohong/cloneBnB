@@ -14,7 +14,20 @@ connection.connect((err) => {
 });
 
 const getReviews = (listingId, callback) => {
-  connection.query('SELECT * FROM reviews WHERE listing_id = ?', [listingId], (err, results) => {
+  connection.query(`SELECT 
+    reviews.id, reviews.accuracy, reviews.checkin,
+    reviews.cleanliness, reviews.communication, reviews.value,
+    reviews.date, reviews.location, 
+    reviews.review_body AS reviewBody,
+    users.id AS userId,
+    users.user_image AS userImage,
+    users.username
+    FROM reviews
+    INNER JOIN users 
+    ON reviews.user_id = users.id 
+    WHERE listing_id = ?`,
+  [listingId],
+  (err, results) => {
     if (err) {
       return callback(err, null);
     }
@@ -22,6 +35,22 @@ const getReviews = (listingId, callback) => {
     return callback(null, results);
   });
 };
+
+/*
+accuracy
+checkin
+cleanliness
+communication
+date
+id
+listing_id
+location
+review_body
+user_id
+user_image
+username
+value
+*/
 
 module.exports = {
   getReviews,

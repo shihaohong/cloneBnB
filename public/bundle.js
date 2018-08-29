@@ -27202,9 +27202,10 @@ var ReviewsList = function ReviewsList(_ref2) {
     reviews.map(function (review) {
       return _react2.default.createElement(
         'div',
-        null,
+        {
+          key: review.id
+        },
         _react2.default.createElement(_ReviewEntryHeader2.default, {
-          key: review.id,
           review: review
         }),
         'Add review body here'

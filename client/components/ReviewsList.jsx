@@ -15,9 +15,10 @@ const ReviewsList = ({ reviews }) => (
   <Wrapper>
     {
       reviews.map(review => (
-        <div>
+        <div
+          key={review.id}
+        >
           <ReviewEntryHeader
-            key={review.id}
             review={review}
           />
           Add review body here
