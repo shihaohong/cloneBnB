@@ -75,4 +75,15 @@ const ReviewCriteriaAverage = ({ averageCriteriaRatings }) => {
   );
 };
 
+ReviewCriteriaAverage.propTypes = {
+  averageCriteriaRatings: PropTypes.shape({
+    accuracy: PropTypes.string.isRequired,
+    checkin: PropTypes.string.isRequired,
+    cleanliness: PropTypes.string.isRequired,
+    communication: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 export default ReviewCriteriaAverage;

@@ -129,6 +129,7 @@ class ReviewHeader extends React.Component {
 
 ReviewHeader.propTypes = {
   reviews: PropTypes.instanceOf(Array).isRequired,
+  widgetWidth: PropTypes.number.isRequired,
 };
 
 export default ReviewHeader;
