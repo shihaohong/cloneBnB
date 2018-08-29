@@ -27185,6 +27185,10 @@ var _ReviewEntryHeader = __webpack_require__(63);
 
 var _ReviewEntryHeader2 = _interopRequireDefault(_ReviewEntryHeader);
 
+var _ReviewEntryBody = __webpack_require__(64);
+
+var _ReviewEntryBody2 = _interopRequireDefault(_ReviewEntryBody);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Wrapper = _styledComponents2.default.section.withConfig({
@@ -27194,21 +27198,30 @@ var Wrapper = _styledComponents2.default.section.withConfig({
   return widgetWidth;
 });
 
+var ReviewEntry = _styledComponents2.default.div.withConfig({
+  displayName: 'ReviewsList__ReviewEntry'
+})(['border-bottom:1px solid #EBEBEB !important;']);
+
 var ReviewsList = function ReviewsList(_ref2) {
   var reviews = _ref2.reviews;
   return _react2.default.createElement(
     Wrapper,
     null,
     reviews.map(function (review) {
+      var reviewBody = review.reviewBody;
+
+
       return _react2.default.createElement(
-        'div',
+        ReviewEntry,
         {
           key: review.id
         },
         _react2.default.createElement(_ReviewEntryHeader2.default, {
           review: review
         }),
-        'Add review body here'
+        _react2.default.createElement(_ReviewEntryBody2.default, {
+          reviewBody: reviewBody
+        })
       );
     })
   );
@@ -27245,20 +27258,60 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var EntryWrapper = _styledComponents2.default.div.withConfig({
+  displayName: 'ReviewEntryHeader__EntryWrapper'
+})(['display:grid;grid-template-columns:60px 570px;grid-template-rows:24px 24px;width:648px;height:48px;']);
+
 var ProfilePicture = _styledComponents2.default.img.withConfig({
   displayName: 'ReviewEntryHeader__ProfilePicture'
-})(['border-radius:50%;width:48px;height:48px;']);
+})(['border-radius:50%;display:inline-block;grid-column:1;grid-row:1 / 2;width:48px;height:48px;']);
+
+var Username = _styledComponents2.default.div.withConfig({
+  displayName: 'ReviewEntryHeader__Username'
+})(['font-weight:600;grid-column:2;grid-row:1;width:570px;']);
+
+var ReviewDate = _styledComponents2.default.div.withConfig({
+  displayName: 'ReviewEntryHeader__ReviewDate'
+})(['grid-column:2;grid-row:2;width:570px;']);
 
 var ReviewEntryHeader = function ReviewEntryHeader(_ref) {
   var review = _ref.review;
+
+  var date = new Date(review.date);
+
+  var months = {
+    0: 'January',
+    1: 'February',
+    2: 'March',
+    3: 'April',
+    4: 'May',
+    5: 'June',
+    6: 'July',
+    7: 'August',
+    8: 'September',
+    9: 'October',
+    10: 'November',
+    11: 'December'
+  };
+
+  var formattedDate = months[date.getMonth()] + ' ' + date.getFullYear();
+
   return _react2.default.createElement(
-    'div',
+    EntryWrapper,
     null,
     _react2.default.createElement(ProfilePicture, {
       src: review.userImage
     }),
-    review.username,
-    review.date
+    _react2.default.createElement(
+      Username,
+      null,
+      review.username
+    ),
+    _react2.default.createElement(
+      ReviewDate,
+      null,
+      formattedDate
+    )
   );
 };
 
@@ -27277,6 +27330,42 @@ ReviewEntryHeader.propTypes = {
 };
 
 exports.default = ReviewEntryHeader;
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = __webpack_require__(51);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _propTypes = __webpack_require__(55);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ReviewEntryBody = function ReviewEntryBody(_ref) {
+  var reviewBody = _ref.reviewBody;
+  return _react2.default.createElement(
+    'div',
+    null,
+    reviewBody
+  );
+};
+
+exports.default = ReviewEntryBody;
 
 /***/ })
 /******/ ]);

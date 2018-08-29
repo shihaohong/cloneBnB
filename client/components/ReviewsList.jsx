@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import ReviewEntryHeader from './ReviewEntryHeader';
+import ReviewEntryBody from './ReviewEntryBody';
 
 const Wrapper = styled.section`
   -webkit-font-smoothing: antialiased;
@@ -13,19 +14,29 @@ const Wrapper = styled.section`
   height: 180px;
 `;
 
+const ReviewEntry = styled.div`
+  border-bottom: 1px solid #EBEBEB !important;
+`;
+
 const ReviewsList = ({ reviews }) => (
   <Wrapper>
     {
-      reviews.map(review => (
-        <div
-          key={review.id}
-        >
-          <ReviewEntryHeader
-            review={review}
-          />
-          Add review body here
-        </div>
-      ))
+      reviews.map((review) => {
+        const { reviewBody } = review;
+
+        return (
+          <ReviewEntry
+            key={review.id}
+          >
+            <ReviewEntryHeader
+              review={review}
+            />
+            <ReviewEntryBody
+              reviewBody={reviewBody}
+            />
+          </ReviewEntry>
+        );
+      })
     }
   </Wrapper>
 );
