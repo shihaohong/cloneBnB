@@ -67,7 +67,7 @@ const generateReviewCSV = (numberOfEntries) => {
 ${userId},\
 ${listingId},\
 ${formattedDate},\
-"${reviewBody}",\
+${reviewBody},\
 ${accuracy},\
 ${communication},\
 ${cleanliness},\
