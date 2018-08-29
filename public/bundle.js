@@ -19928,6 +19928,10 @@ var _ReviewHeader = __webpack_require__(50);
 
 var _ReviewHeader2 = _interopRequireDefault(_ReviewHeader);
 
+var _ReviewsList = __webpack_require__(62);
+
+var _ReviewsList2 = _interopRequireDefault(_ReviewsList);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19977,6 +19981,9 @@ var App = function (_React$Component) {
         _react2.default.createElement(_ReviewHeader2.default, {
           reviews: reviews,
           widgetWidth: widgetWidth
+        }),
+        _react2.default.createElement(_ReviewsList2.default, {
+          reviews: reviews
         })
       );
     }
@@ -21932,7 +21939,8 @@ var ReviewHeader = function (_React$Component) {
 }(_react2.default.Component);
 
 ReviewHeader.propTypes = {
-  reviews: _propTypes2.default.instanceOf(Array).isRequired
+  reviews: _propTypes2.default.instanceOf(Array).isRequired,
+  widgetWidth: _propTypes2.default.number.isRequired
 };
 
 exports.default = ReviewHeader;
@@ -27137,7 +27145,130 @@ var ReviewCriteriaAverage = function ReviewCriteriaAverage(_ref2) {
   );
 };
 
+ReviewCriteriaAverage.propTypes = {
+  averageCriteriaRatings: _propTypes2.default.shape({
+    accuracy: _propTypes2.default.string.isRequired,
+    checkin: _propTypes2.default.string.isRequired,
+    cleanliness: _propTypes2.default.string.isRequired,
+    communication: _propTypes2.default.string.isRequired,
+    location: _propTypes2.default.string.isRequired,
+    value: _propTypes2.default.string.isRequired
+  }).isRequired
+};
+
 exports.default = ReviewCriteriaAverage;
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = __webpack_require__(51);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _propTypes = __webpack_require__(55);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _ReviewEntryHeader = __webpack_require__(63);
+
+var _ReviewEntryHeader2 = _interopRequireDefault(_ReviewEntryHeader);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Wrapper = _styledComponents2.default.section.withConfig({
+  displayName: 'ReviewsList__Wrapper'
+})(['margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
+  var widgetWidth = _ref.widgetWidth;
+  return widgetWidth;
+});
+
+var ReviewsList = function ReviewsList(_ref2) {
+  var reviews = _ref2.reviews;
+  return _react2.default.createElement(
+    Wrapper,
+    null,
+    reviews.map(function (review) {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_ReviewEntryHeader2.default, {
+          key: review.id,
+          review: review
+        }),
+        'Add review body here'
+      );
+    })
+  );
+};
+
+ReviewsList.propTypes = {
+  reviews: _propTypes2.default.instanceOf(Array).isRequired
+};
+
+exports.default = ReviewsList;
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = __webpack_require__(51);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _propTypes = __webpack_require__(55);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ReviewEntryHeader = function ReviewEntryHeader(_ref) {
+  var review = _ref.review;
+  return _react2.default.createElement(
+    'div',
+    null,
+    'Entry Header'
+  );
+};
+
+ReviewEntryHeader.propTypes = {
+  review: _propTypes2.default.shape({
+    accuracy: _propTypes2.default.number.isRequired,
+    checkin: _propTypes2.default.number.isRequired,
+    cleanliness: _propTypes2.default.number.isRequired,
+    communication: _propTypes2.default.number.isRequired,
+    date: _propTypes2.default.string.isRequired,
+    listing_id: _propTypes2.default.number.isRequired,
+    location: _propTypes2.default.number.isRequired,
+    review_body: _propTypes2.default.string.isRequired,
+    user_id: _propTypes2.default.number.isRequired,
+    value: _propTypes2.default.number.isRequired
+  }).isRequired
+};
+
+exports.default = ReviewEntryHeader;
 
 /***/ })
 /******/ ]);

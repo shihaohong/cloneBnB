@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import ReviewHeader from './ReviewHeader';
+import ReviewsList from './ReviewsList';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,6 +31,9 @@ class App extends React.Component {
         <ReviewHeader
           reviews={reviews}
           widgetWidth={widgetWidth}
+        />
+        <ReviewsList
+          reviews={reviews}
         />
       </div>
     );
