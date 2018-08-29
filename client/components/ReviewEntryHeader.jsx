@@ -8,6 +8,7 @@ const EntryWrapper = styled.div`
   grid-template-rows: 24px 24px;
   width: 648px;
   height: 48px;
+  margin: 15px 0px 15px 0px;
 `;
 
 const ProfilePicture = styled.img`
@@ -32,8 +33,8 @@ const ReviewDate = styled.div`
   width: 570px;
 `;
 
-const ReviewEntryHeader = ({ review }) => {
-  const date = new Date(review.date);
+const ReviewEntryHeader = ({ username, userImage, date }) => {
+  const dateObj = new Date(date);
 
   const months = {
     0: 'January',
@@ -50,15 +51,15 @@ const ReviewEntryHeader = ({ review }) => {
     11: 'December',
   };
 
-  const formattedDate = `${months[date.getMonth()]} ${date.getFullYear()}`;
+  const formattedDate = `${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
 
   return (
     <EntryWrapper>
       <ProfilePicture
-        src={review.userImage}
+        src={userImage}
       />
       <Username>
-        {review.username}
+        {username}
       </Username>
       <ReviewDate>
         {formattedDate}
@@ -68,17 +69,9 @@ const ReviewEntryHeader = ({ review }) => {
 };
 
 ReviewEntryHeader.propTypes = {
-  review: PropTypes.shape({
-    accuracy: PropTypes.number.isRequired,
-    checkin: PropTypes.number.isRequired,
-    cleanliness: PropTypes.number.isRequired,
-    communication: PropTypes.number.isRequired,
-    date: PropTypes.string.isRequired,
-    location: PropTypes.number.isRequired,
-    reviewBody: PropTypes.string.isRequired,
-    userId: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-  }).isRequired,
+  date: PropTypes.string.isRequired,
+  userImage: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 export default ReviewEntryHeader;

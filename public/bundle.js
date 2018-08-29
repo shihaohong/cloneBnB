@@ -27208,7 +27208,10 @@ var ReviewsList = function ReviewsList(_ref2) {
     Wrapper,
     null,
     reviews.map(function (review) {
-      var reviewBody = review.reviewBody;
+      var username = review.username,
+          userImage = review.userImage,
+          date = review.date,
+          reviewBody = review.reviewBody;
 
 
       return _react2.default.createElement(
@@ -27217,7 +27220,9 @@ var ReviewsList = function ReviewsList(_ref2) {
           key: review.id
         },
         _react2.default.createElement(_ReviewEntryHeader2.default, {
-          review: review
+          username: username,
+          userImage: userImage,
+          date: date
         }),
         _react2.default.createElement(_ReviewEntryBody2.default, {
           reviewBody: reviewBody
@@ -27260,7 +27265,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var EntryWrapper = _styledComponents2.default.div.withConfig({
   displayName: 'ReviewEntryHeader__EntryWrapper'
-})(['display:grid;grid-template-columns:60px 570px;grid-template-rows:24px 24px;width:648px;height:48px;']);
+})(['display:grid;grid-template-columns:60px 570px;grid-template-rows:24px 24px;width:648px;height:48px;margin:15px 0px 15px 0px;']);
 
 var ProfilePicture = _styledComponents2.default.img.withConfig({
   displayName: 'ReviewEntryHeader__ProfilePicture'
@@ -27275,9 +27280,11 @@ var ReviewDate = _styledComponents2.default.div.withConfig({
 })(['grid-column:2;grid-row:2;width:570px;']);
 
 var ReviewEntryHeader = function ReviewEntryHeader(_ref) {
-  var review = _ref.review;
+  var username = _ref.username,
+      userImage = _ref.userImage,
+      date = _ref.date;
 
-  var date = new Date(review.date);
+  var dateObj = new Date(date);
 
   var months = {
     0: 'January',
@@ -27294,18 +27301,18 @@ var ReviewEntryHeader = function ReviewEntryHeader(_ref) {
     11: 'December'
   };
 
-  var formattedDate = months[date.getMonth()] + ' ' + date.getFullYear();
+  var formattedDate = months[dateObj.getMonth()] + ' ' + dateObj.getFullYear();
 
   return _react2.default.createElement(
     EntryWrapper,
     null,
     _react2.default.createElement(ProfilePicture, {
-      src: review.userImage
+      src: userImage
     }),
     _react2.default.createElement(
       Username,
       null,
-      review.username
+      username
     ),
     _react2.default.createElement(
       ReviewDate,
@@ -27316,17 +27323,9 @@ var ReviewEntryHeader = function ReviewEntryHeader(_ref) {
 };
 
 ReviewEntryHeader.propTypes = {
-  review: _propTypes2.default.shape({
-    accuracy: _propTypes2.default.number.isRequired,
-    checkin: _propTypes2.default.number.isRequired,
-    cleanliness: _propTypes2.default.number.isRequired,
-    communication: _propTypes2.default.number.isRequired,
-    date: _propTypes2.default.string.isRequired,
-    location: _propTypes2.default.number.isRequired,
-    reviewBody: _propTypes2.default.string.isRequired,
-    userId: _propTypes2.default.number.isRequired,
-    value: _propTypes2.default.number.isRequired
-  }).isRequired
+  date: _propTypes2.default.string.isRequired,
+  userImage: _propTypes2.default.string.isRequired,
+  username: _propTypes2.default.string.isRequired
 };
 
 exports.default = ReviewEntryHeader;
@@ -27356,13 +27355,21 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var ReviewEntryBodyWrapper = _styledComponents2.default.div.withConfig({
+  displayName: 'ReviewEntryBody__ReviewEntryBodyWrapper'
+})(['width:650px;margin-bottom:15px;']);
+
 var ReviewEntryBody = function ReviewEntryBody(_ref) {
   var reviewBody = _ref.reviewBody;
   return _react2.default.createElement(
-    'div',
+    ReviewEntryBodyWrapper,
     null,
     reviewBody
   );
+};
+
+ReviewEntryBody.propTypes = {
+  reviewBody: _propTypes2.default.string.isRequired
 };
 
 exports.default = ReviewEntryBody;

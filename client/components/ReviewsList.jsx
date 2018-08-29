@@ -22,14 +22,21 @@ const ReviewsList = ({ reviews }) => (
   <Wrapper>
     {
       reviews.map((review) => {
-        const { reviewBody } = review;
+        const {
+          username,
+          userImage,
+          date,
+          reviewBody,
+        } = review;
 
         return (
           <ReviewEntry
             key={review.id}
           >
             <ReviewEntryHeader
-              review={review}
+              username={username}
+              userImage={userImage}
+              date={date}
             />
             <ReviewEntryBody
               reviewBody={reviewBody}
