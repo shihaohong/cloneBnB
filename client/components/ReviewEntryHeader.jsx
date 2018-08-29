@@ -2,10 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+const ProfilePicture = styled.img`
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+`;
 
 const ReviewEntryHeader = ({ review }) => (
   <div>
-    Entry Header
+    <ProfilePicture
+      src={review.userImage}
+    />
+    {review.username}
+    {review.date}
   </div>
 );
 

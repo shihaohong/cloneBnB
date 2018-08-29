@@ -21797,7 +21797,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Wrapper = _styledComponents2.default.section.withConfig({
   displayName: 'ReviewHeader__Wrapper'
-})(['margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
+})(['-webkit-font-smoothing:antialiased;margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
   var widgetWidth = _ref.widgetWidth;
   return widgetWidth;
 });
@@ -27245,12 +27245,20 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var ProfilePicture = _styledComponents2.default.img.withConfig({
+  displayName: 'ReviewEntryHeader__ProfilePicture'
+})(['border-radius:50%;width:48px;height:48px;']);
+
 var ReviewEntryHeader = function ReviewEntryHeader(_ref) {
   var review = _ref.review;
   return _react2.default.createElement(
     'div',
     null,
-    'Entry Header'
+    _react2.default.createElement(ProfilePicture, {
+      src: review.userImage
+    }),
+    review.username,
+    review.date
   );
 };
 
