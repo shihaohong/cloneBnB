@@ -14,6 +14,7 @@ connection.connect((err) => {
 });
 
 const getReviews = (listingId, callback) => {
+  // TODO: sort by most recent review first
   connection.query(`SELECT 
     reviews.id, reviews.accuracy, reviews.checkin,
     reviews.cleanliness, reviews.communication, reviews.value,
@@ -35,22 +36,6 @@ const getReviews = (listingId, callback) => {
     return callback(null, results);
   });
 };
-
-/*
-accuracy
-checkin
-cleanliness
-communication
-date
-id
-listing_id
-location
-review_body
-user_id
-user_image
-username
-value
-*/
 
 module.exports = {
   getReviews,
