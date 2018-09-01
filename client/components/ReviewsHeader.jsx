@@ -7,6 +7,7 @@ import ReviewsCriteriaAverage from './ReviewsCriteriaAverage';
 
 const Wrapper = styled.section`
   -webkit-font-smoothing: antialiased;
+  font-family: Circular, "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #484848;
   margin-left: 120px;
   padding: 24px;

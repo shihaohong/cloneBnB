@@ -28,6 +28,7 @@ const Username = styled.div`
 `;
 
 const ReviewDate = styled.div`
+  font-size: 14px;
   grid-column: 2;
   grid-row: 2;
   width: 570px;

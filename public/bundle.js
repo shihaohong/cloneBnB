@@ -21797,7 +21797,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Wrapper = _styledComponents2.default.section.withConfig({
   displayName: 'ReviewsHeader__Wrapper'
-})(['-webkit-font-smoothing:antialiased;color:#484848;margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
+})(['-webkit-font-smoothing:antialiased;font-family:Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;color:#484848;margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
   var widgetWidth = _ref.widgetWidth;
   return widgetWidth;
 });
@@ -27193,7 +27193,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Wrapper = _styledComponents2.default.section.withConfig({
   displayName: 'ReviewsList__Wrapper'
-})(['-webkit-font-smoothing:antialiased;color:#484848;margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
+})(['-webkit-font-smoothing:antialiased;font-family:Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;color:#484848;margin-left:120px;padding:24px;width:', 'px;height:180px;'], function (_ref) {
   var widgetWidth = _ref.widgetWidth;
   return widgetWidth;
 });
@@ -27277,7 +27277,7 @@ var Username = _styledComponents2.default.div.withConfig({
 
 var ReviewDate = _styledComponents2.default.div.withConfig({
   displayName: 'ReviewEntryHeader__ReviewDate'
-})(['grid-column:2;grid-row:2;width:570px;']);
+})(['font-size:14px;grid-column:2;grid-row:2;width:570px;']);
 
 var ReviewEntryHeader = function ReviewEntryHeader(_ref) {
   var username = _ref.username,
