@@ -55,7 +55,12 @@ const generateReviewCSV = (numberOfEntries) => {
     const listingId = integerGenerator(10);
     const date = faker.fake('{{date.past}}');
     const formattedDate = new Date(date).toISOString();
-    const reviewBody = faker.fake('{{lorem.paragraph}}');
+    let reviewBody;
+    if (Math.random() < 0.50) {
+      reviewBody = faker.fake('{{lorem.paragraph}}');
+    } else {
+      reviewBody = faker.fake('{{lorem.paragraph}}') + faker.fake('{{lorem.paragraph}}');
+    }
     const accuracy = generateFiveStarReview();
     const communication = generateFiveStarReview();
     const cleanliness = generateFiveStarReview();

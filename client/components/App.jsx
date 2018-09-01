@@ -14,7 +14,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/reviews/2') // TODO: remove hard-coded 2 and set to proper listing id
+    axios.get('/listing/3/reviews') // TODO: remove hard-coded 2 and set to proper listing id
       .then(({ data }) => {
         this.setState({
           reviews: data,

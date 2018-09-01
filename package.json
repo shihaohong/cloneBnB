@@ -5,11 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -w --config webpack.config.js",
-    "server:test": "nodemon ./server/index.js",
     "csv:generate": "node ./db/generateCsv.js",
     "db:seed": "mysql -u root < ./db/schema.sql",
     "db:genseed": "node ./db/generateCsv.js && mysql -u root < ./db/schema.sql",
-    "test": "echo 'A first hello'"
+    "server:test": "nodemon ./server/index.js"
   },
   "repository": {
     "type": "git",
