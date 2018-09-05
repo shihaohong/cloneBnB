@@ -5,52 +5,51 @@ import PropTypes from 'prop-types';
 import ReviewEntryHeader from './ReviewEntryHeader';
 import ReviewEntryBody from './ReviewEntryBody';
 
-const Wrapper = styled.section`
-  -webkit-font-smoothing: antialiased;
-  font-family: Circular, "Helvetica Neue",Helvetica,Arial,sans-serif;
-  color: #484848;
-  margin-left: 120px;
-  padding: 24px;
-  width: ${({ widgetWidth }) => widgetWidth}px;
-  height: 180px;
-`;
-
 const ReviewEntry = styled.div`
   border-bottom: 1px solid #EBEBEB !important;
 `;
 
-const ReviewsList = ({ reviews }) => (
-  <Wrapper>
-    {
-      reviews.map((review) => {
-        const {
-          username,
-          userImage,
-          date,
-          reviewBody,
-        } = review;
+const ReviewsList = ({ reviews, currentPage }) => {
+  let reviewsToDisplay = [];
 
-        return (
-          <ReviewEntry
-            key={review.id}
-          >
-            <ReviewEntryHeader
-              username={username}
-              userImage={userImage}
-              date={date}
-            />
-            <ReviewEntryBody
-              reviewBody={reviewBody}
-            />
-          </ReviewEntry>
-        );
-      })
-    }
-  </Wrapper>
-);
+  const reviewSliceToDisplay = (currentPage - 1) * 7;
+  reviewsToDisplay = reviews.slice(reviewSliceToDisplay, reviewSliceToDisplay + 7);
+
+  return (
+    <div>
+      {
+        reviewsToDisplay.map((review) => {
+          const {
+            username,
+            userImage,
+            date,
+            reviewBody,
+          } = review;
+
+          return (
+            <ReviewEntry
+              key={review.id}
+            >
+              <ReviewEntryHeader
+                username={username}
+                userImage={userImage}
+                date={date}
+              />
+              <ReviewEntryBody
+                reviewBody={reviewBody}
+              />
+            </ReviewEntry>
+          );
+        })
+      }
+    </div>
+  );
+};
+
 
 ReviewsList.propTypes = {
   reviews: PropTypes.instanceOf(Array).isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 
 export default ReviewsList;

@@ -5,16 +5,6 @@ import PropTypes from 'prop-types';
 import FiveStar from './FiveStar';
 import ReviewsCriteriaAverage from './ReviewsCriteriaAverage';
 
-const Wrapper = styled.section`
-  -webkit-font-smoothing: antialiased;
-  font-family: Circular, "Helvetica Neue",Helvetica,Arial,sans-serif;
-  color: #484848;
-  margin-left: 120px;
-  padding: 24px;
-  width: ${({ widgetWidth }) => widgetWidth}px;
-  height: 180px;
-`;
-
 const ReviewsHeading = styled.h2`
   border-bottom: 1px solid #EBEBEB !important;
   font-weight: bold;
@@ -101,9 +91,7 @@ class ReviewsHeader extends React.Component {
     const numReviews = `${reviews.length} Reviews`;
 
     return (
-      <Wrapper
-        widgetWidth={widgetWidth}
-      >
+      <div>
         <ReviewsHeading>
           <LeftSideHeader
             widgetWidth={widgetWidth}
@@ -124,7 +112,7 @@ class ReviewsHeader extends React.Component {
           averageCriteriaRatings={averageCriteriaRatings}
           widgetWidth={widgetWidth}
         />
-      </Wrapper>
+      </div>
     );
   }
 }
