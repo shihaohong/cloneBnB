@@ -8,8 +8,65 @@ const PaginationLinks = styled.ul`
 `;
 
 const LinkItem = styled.li`
+  color: rgb(0, 132, 137);
+  cursor: pointer;
   display: inline-block;
-  padding: 8px;
+  padding: 16px;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const ExpandedItem = styled.li`
+  display: inline-block;
+  padding: 16px;
+`;
+
+const SelectedItem = styled.li`
+  background-color: transparent;
+  display: inline-block;
+  padding: 16px;
+`;
+
+const SelectedButton = styled.button`
+  display: inline-block;
+  font-size: 14px;
+  background-color: rgb(0, 132, 137);
+  color: rgb(255, 255, 255);
+  width: 32px;
+  height: 32px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: initial;
+  border-image: initial;
+  border-radius: 16px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const ArrowItem = styled.li`
+  background-color: transparent;
+  display: inline-block;
+  padding: 16px;
+`;
+
+const ArrowButton = styled.button`
+  display: inline-block;
+  font-size: 14px;
+  color: rgb(0, 132, 137);
+  width: 32px;
+  height: 32px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: initial;
+  border-image: initial;
+  border-radius: 16px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
@@ -17,12 +74,14 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
   const renderLeftNavigationButton = () => {
     if (currentPage !== 1) {
       return (
-        <LinkItem
+        <ArrowItem
           key="<"
           onClick={() => handlePageChange(currentPage - 1)}
         >
-          {'<'}
-        </LinkItem>
+          <ArrowButton>
+            {'<'}
+          </ArrowButton>
+        </ArrowItem>
       );
     }
 
@@ -32,29 +91,48 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
   const renderRightNavigationButton = () => {
     if (currentPage !== numberOfPages) {
       return (
-        <LinkItem
+        <ArrowItem
           key=">"
           onClick={() => handlePageChange(currentPage + 1)}
         >
-          {'>'}
-        </LinkItem>
+          <ArrowButton>
+            {'>'}
+          </ArrowButton>
+        </ArrowItem>
       );
     }
 
     return undefined;
   };
 
+  const isSelectedPageRender = (currentPage, index) => {
+    if (currentPage === index) {
+      return (
+        <SelectedItem
+          key={index}
+          onClick={() => handlePageChange(index)}
+        >
+          <SelectedButton>
+            {index}
+          </SelectedButton>
+        </SelectedItem>
+      );
+    }
+
+    return (
+      <LinkItem
+        key={index}
+        onClick={() => handlePageChange(index)}
+      >
+        {index}
+      </LinkItem>
+    );
+  };
+
   const renderPages = (start, end) => {
     const pageButtons = [];
     for (let i = start; i <= end; i += 1) {
-      pageButtons.push((
-        <LinkItem
-          key={i}
-          onClick={() => handlePageChange(i)}
-        >
-          {i}
-        </LinkItem>
-      ));
+      pageButtons.push(isSelectedPageRender(currentPage, i));
     }
 
     return pageButtons;
@@ -64,18 +142,13 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
     const pageButtons = [];
 
     pageButtons.push((
-      <LinkItem
-        key={1}
-        onClick={() => handlePageChange(1)}
-      >
-        1
-      </LinkItem>
+      isSelectedPageRender(currentPage, 1)
     ));
 
     pageButtons.push((
-      <LinkItem key="<...">
+      <ExpandedItem key="<...">
         ...
-      </LinkItem>
+      </ExpandedItem>
     ));
 
     return pageButtons;
@@ -85,18 +158,13 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
     const pageButtons = [];
 
     pageButtons.push((
-      <LinkItem key=">...">
+      <ExpandedItem key=">...">
         ...
-      </LinkItem>
+      </ExpandedItem>
     ));
 
     pageButtons.push((
-      <LinkItem
-        key={numberOfPages}
-        onClick={() => handlePageChange(numberOfPages)}
-      >
-        {numberOfPages}
-      </LinkItem>
+      isSelectedPageRender(currentPage, numberOfPages)
     ));
 
     return pageButtons;
