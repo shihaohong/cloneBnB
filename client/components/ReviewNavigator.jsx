@@ -105,8 +105,8 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
     return undefined;
   };
 
-  const isSelectedPageRender = (currentPage, index) => {
-    if (currentPage === index) {
+  const isSelectedPageRender = (selectedPage, index) => {
+    if (selectedPage === index) {
       return (
         <SelectedItem
           key={index}
