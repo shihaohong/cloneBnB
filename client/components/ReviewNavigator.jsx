@@ -18,6 +18,7 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
     if (currentPage !== 1) {
       return (
         <LinkItem
+          key="<"
           onClick={() => handlePageChange(currentPage - 1)}
         >
           {'<'}
@@ -32,6 +33,7 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
     if (currentPage !== numberOfPages) {
       return (
         <LinkItem
+          key=">"
           onClick={() => handlePageChange(currentPage + 1)}
         >
           {'>'}
@@ -71,7 +73,7 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
     ));
 
     pageButtons.push((
-      <LinkItem key="...">
+      <LinkItem key="<...">
         ...
       </LinkItem>
     ));
@@ -83,7 +85,7 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
     const pageButtons = [];
 
     pageButtons.push((
-      <LinkItem key="...">
+      <LinkItem key=">...">
         ...
       </LinkItem>
     ));
@@ -103,7 +105,6 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
   // Main Page Number Navigation Function
   const renderPageButtons = () => {
     let pageButtonsToDisplay = [];
-
     if (numberOfPages < 7) {
       pageButtonsToDisplay = pageButtonsToDisplay.concat(renderPages(1, numberOfPages));
       return pageButtonsToDisplay;
