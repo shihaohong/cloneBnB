@@ -93,4 +93,4 @@ ${value}\n`;
 
 generateListingCSV(10);
 generateUserCSV(10);
-generateReviewCSV(300);
+generateReviewCSV(600);

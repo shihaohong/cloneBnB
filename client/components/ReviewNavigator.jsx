@@ -57,6 +57,48 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
     return pageButtons;
   };
 
+  const renderTrailingStart = () => {
+    const pageButtons = [];
+
+    pageButtons.push((
+      <LinkItem
+        key={1}
+        onClick={() => handlePageChange(1)}
+      >
+        1
+      </LinkItem>
+    ));
+
+    pageButtons.push((
+      <LinkItem key="...">
+        ...
+      </LinkItem>
+    ));
+
+    return pageButtons;
+  };
+
+  const renderTrailingEnd = () => {
+    const pageButtons = [];
+
+    pageButtons.push((
+      <LinkItem key="...">
+        ...
+      </LinkItem>
+    ));
+
+    pageButtons.push((
+      <LinkItem
+        key={numberOfPages}
+        onClick={() => handlePageChange(numberOfPages)}
+      >
+        {numberOfPages}
+      </LinkItem>
+    ));
+
+    return pageButtons;
+  };
+
   // Main Page Number Navigation Function
   const renderPageButtons = () => {
     let pageButtonsToDisplay = [];
@@ -68,73 +110,27 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
 
     if (currentPage >= 1 && currentPage <= 3) {
       pageButtonsToDisplay = pageButtonsToDisplay.concat(renderPages(1, currentPage + 2));
-
-      pageButtonsToDisplay.push((
-        <LinkItem key="...">
-          ...
-        </LinkItem>
-      ));
-
-      pageButtonsToDisplay.push((
-        <LinkItem
-          key={numberOfPages}
-          onClick={() => handlePageChange(numberOfPages)}
-        >
-          {numberOfPages}
-        </LinkItem>
-      ));
+      pageButtonsToDisplay = pageButtonsToDisplay.concat(renderTrailingEnd());
     } else if (currentPage === 4) {
-      // if page 4, render 1 - 5, ... lp
       pageButtonsToDisplay = pageButtonsToDisplay.concat(renderPages(1, currentPage + 1));
-
-      pageButtonsToDisplay.push((
-        <LinkItem key="...">
-          ...
-        </LinkItem>
-      ));
-
-      pageButtonsToDisplay.push((
-        <LinkItem
-          key={numberOfPages}
-          onClick={() => handlePageChange(numberOfPages)}
-        >
-          {numberOfPages}
-        </LinkItem>
-      ));
-    } else {
-      // page 5 onwards, render 1 ... curr - 1, curr, curr + 1, ... lp OR lp - 1, lp
-      pageButtonsToDisplay.push((
-        <LinkItem 
-          key={1}
-          onClick={() => handlePageChange(1)}
-        >
-          1
-        </LinkItem>
-      ));
-
-      pageButtonsToDisplay.push((
-        <LinkItem key="...">
-          ...
-        </LinkItem>
-      ));
+      pageButtonsToDisplay = pageButtonsToDisplay.concat(renderTrailingEnd());
+    } else if (currentPage >= 4 && currentPage <= numberOfPages - 4) {
+      pageButtonsToDisplay = pageButtonsToDisplay.concat(renderTrailingStart());
 
       const intermediatePages = renderPages(currentPage - 1, currentPage + 1);
       pageButtonsToDisplay = pageButtonsToDisplay.concat(intermediatePages);
 
-      pageButtonsToDisplay.push((
-        <LinkItem key="...">
-          ...
-        </LinkItem>
-      ));
+      pageButtonsToDisplay = pageButtonsToDisplay.concat(renderTrailingEnd());
+    } else if (currentPage >= (numberOfPages - 3) && (currentPage <= (numberOfPages - 1))) {
+      pageButtonsToDisplay = pageButtonsToDisplay.concat(renderTrailingStart());
 
-      pageButtonsToDisplay.push((
-        <LinkItem
-          key={numberOfPages}
-          onClick={() => handlePageChange(numberOfPages)}
-        >
-          {numberOfPages}
-        </LinkItem>
-      ));
+      const intermediatePages = renderPages(currentPage - 1, numberOfPages);
+      pageButtonsToDisplay = pageButtonsToDisplay.concat(intermediatePages);
+    } else {
+      pageButtonsToDisplay = pageButtonsToDisplay.concat(renderTrailingStart());
+
+      const intermediatePages = renderPages(currentPage - 2, numberOfPages);
+      pageButtonsToDisplay = pageButtonsToDisplay.concat(intermediatePages);
     }
 
     return pageButtonsToDisplay;
