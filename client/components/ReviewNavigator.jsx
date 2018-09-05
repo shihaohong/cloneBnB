@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const PaginationLinks = styled.ul`
   display: block;
@@ -143,6 +144,12 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
       {renderRightNavigationButton()}
     </PaginationLinks>
   );
+};
+
+ReviewNavigator.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  numberOfPages: PropTypes.number.isRequired,
+  handlePageChange: PropTypes.func.isRequired,
 };
 
 export default ReviewNavigator;
