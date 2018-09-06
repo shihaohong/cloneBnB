@@ -36,6 +36,8 @@ class App extends React.Component {
 
     axios.get(`/listing/${listingId}/reviews`)
       .then(({ data }) => {
+        data.sort((reviewA, reviewB) => new Date(reviewB.date) - new Date(reviewA.date));
+
         const numberOfPages = Math.ceil(data.length / 7);
 
         this.setState({
