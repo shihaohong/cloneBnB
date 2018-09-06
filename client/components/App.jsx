@@ -20,6 +20,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.myRef = React.createRef();
+
     this.state = {
       reviews: [],
       currentPage: 0,
@@ -43,9 +45,18 @@ class App extends React.Component {
   }
 
   handlePageChange(newPage) {
-    this.setState({
-      currentPage: newPage,
-    });
+    const { currentPage } = this.state;
+    if (newPage !== currentPage) {
+      this.setState({
+        currentPage: newPage,
+      });
+      
+      window.scroll({
+        top: this.myRef,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
   }
 
   render() {
