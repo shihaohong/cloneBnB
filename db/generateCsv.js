@@ -91,6 +91,6 @@ ${value}\n`;
   });
 };
 
-generateListingCSV(10);
+generateListingCSV(100);
 generateUserCSV(10);
 generateReviewCSV(600);
