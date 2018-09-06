@@ -32,7 +32,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/listing/3/reviews') // TODO: remove hard-coded 2 and set to proper listing id
+    const listingId = window.location.pathname.split('/')[2];
+
+    axios.get(`/listing/${listingId}/reviews`)
       .then(({ data }) => {
         const numberOfPages = Math.ceil(data.length / 7);
 
@@ -50,7 +52,7 @@ class App extends React.Component {
       this.setState({
         currentPage: newPage,
       });
-      
+
       window.scroll({
         top: this.myRef,
         left: 0,
