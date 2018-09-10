@@ -8,7 +8,8 @@
     "csv:generate": "node ./db/generateCsv.js",
     "db:seed": "mysql -u root < ./db/schema.sql",
     "db:genseed": "node ./db/generateCsv.js && mysql -u root < ./db/schema.sql",
-    "server:test": "nodemon ./server/index.js"
+    "server:test": "nodemon ./server/index.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -32,17 +33,22 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^7.1.5",
     "babel-plugin-styled-components": "^1.5.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
+    "jest": "^23.6.0",
     "nodemon": "^1.18.3",
+    "regenerator-runtime": "^0.12.1",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
   }
