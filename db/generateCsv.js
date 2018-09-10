@@ -51,9 +51,10 @@ const generateListingCSV = (numberOfEntries) => {
   });
 };
 
-
 const generateReviewCSV = (numberOfEntries) => {
-  let reviewsCsvData = 'id,user_id,listing_id,date,review_body,accuracy,communication,cleanliness,location,checkin,value\n';
+  let reviewsCsvData = 'id,user_id,listing_id,date,review_body,host_response_id,accuracy,communication,cleanliness,location,checkin,value\n';
+  let reviewResponsesData = 'id,response_text,response_date,user_id\n';
+  let reviewResponseId = 1;
 
   for (let i = 0; i < numberOfEntries; i += 1) {
     const reviewId = i + 1;
@@ -67,6 +68,32 @@ const generateReviewCSV = (numberOfEntries) => {
     } else {
       reviewBody = faker.fake('{{lorem.paragraph}}') + faker.fake('{{lorem.paragraph}}');
     }
+
+    // logic for generating review host responses
+    let hostResponseId = null;
+
+    // create responses for 10% of reviews
+    if (Math.random() < 0.10) {
+      hostResponseId = integerGenerator(numberOfUsers - 1);
+
+      // prevents the review writer from responding to itself
+      while (hostResponseId === userId) {
+        hostResponseId = integerGenerator(numberOfUsers - 1);
+      }
+
+      const responseBody = faker.fake('{{lorem.paragraph}}');
+      const responseDate = faker.fake('{{date.past}}');
+      const formattedResponseDate = new Date(responseDate).toISOString();
+
+      reviewResponsesData += `${reviewResponseId},\
+${responseBody},\
+${formattedResponseDate},\
+${hostResponseId}\n`;
+
+      reviewResponseId += 1;
+    }
+
+
     const accuracy = generateFiveStarReview();
     const communication = generateFiveStarReview();
     const cleanliness = generateFiveStarReview();
@@ -94,7 +121,17 @@ ${value}\n`;
     }
 
     console.log('reviews.csv was successfully generated');
+
+    writeFile(`${__dirname}/responses.csv`, reviewResponsesData, (err) => {
+      if (err) {
+        console.log('could not create reviews.csv');
+        return;
+      }
+
+      console.log('responses.csv was successfully generated');
+    });
   });
+
 };
 
 generateListingCSV(numberOfListings);
