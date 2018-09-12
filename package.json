@@ -11,7 +11,8 @@
     "build": "webpack --mode production",
     "server:test": "nodemon ./server/index.js",
     "start": "node ./server/index.js",
-    "test": "jest --watch --config --coverage"
+    "test": "jest --config --coverage",
+    "test:watch": "--watch --config --coverage"
   },
   "repository": {
     "type": "git",
