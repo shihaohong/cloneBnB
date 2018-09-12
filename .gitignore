@@ -7,3 +7,6 @@ config.js
 db/users.csv
 db/listings.csv
 db/reviews.csv
+
+# jest coverage
+coverage
