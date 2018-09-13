@@ -1,34 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 
 import ReviewsHeader from '../ReviewsHeader';
-import sampleData from './data/sampleData';
+import sampleReviews from './data/sampleReviews';
 
 describe('ReviewsHeader test suite', () => {
   const defaultWidgetWidth = 650;
+  const defaultProps = {
+    reviews: sampleReviews,
+    widgetWidth: defaultWidgetWidth,
+  }
 
   it('renders without crashing', () => {
     const container = document.createElement('div');
     const reviews = [];
-    ReactDOM.render(<ReviewsHeader 
-      reviews={reviews}
-      widgetWidth={defaultWidgetWidth}
-    />, container);
+    ReactDOM.render(<ReviewsHeader {...defaultProps} />, container);
   });
 
   it('should render the text \'{number} Reviews\' based on the number of reviews passed in', () => {
     const container = document.createElement('div');
-    ReactDOM.render(<ReviewsHeader
-      reviews={sampleData}
-      widgetWidth={defaultWidgetWidth}
-    />, container);
+    ReactDOM.render(<ReviewsHeader {...defaultProps} />, container);
     expect(container.textContent).toMatch('5 Reviews');
   });
 
   it('should calculate the total average star ratings correctly for one review', () => {
-    const firstReviewObj = [sampleData[0]];
+    const firstReviewObj = [sampleReviews[0]];
     const wrapper = shallow(<ReviewsHeader
       reviews={firstReviewObj}
       widgetWidth={defaultWidgetWidth}
@@ -42,10 +39,7 @@ describe('ReviewsHeader test suite', () => {
   });
 
   it('should calculate the total average star ratings correctly for five reviews', () => {  
-    const wrapper = shallow(<ReviewsHeader 
-      reviews={sampleData}
-      widgetWidth={defaultWidgetWidth}
-    />);
+    const wrapper = shallow(<ReviewsHeader  {...defaultProps} />);
 
     const instance = wrapper.instance();
 
@@ -55,7 +49,7 @@ describe('ReviewsHeader test suite', () => {
   });
 
   it('should calculate the average criteria star ratings correctly for one review', () => {
-    const firstReviewObj = [sampleData[0]];
+    const firstReviewObj = [sampleReviews[0]];
     const wrapper = shallow(<ReviewsHeader
       reviews={firstReviewObj}
       widgetWidth={defaultWidgetWidth}
@@ -81,10 +75,7 @@ describe('ReviewsHeader test suite', () => {
   });
 
   it('should calculate the average criteria star ratings correctly for five reviews', () => {
-    const wrapper = shallow(<ReviewsHeader 
-      reviews={sampleData}
-      widgetWidth={defaultWidgetWidth}
-    />);
+    const wrapper = shallow(<ReviewsHeader  {...defaultProps} />);
 
     const instance = wrapper.instance();
 

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import ReviewsHeader from './ReviewsHeader';
 import ReviewsList from './ReviewsList';
-import ReviewNavigator from './ReviewNavigator';
+import { ReviewNavigator } from './ReviewNavigator';
 
 const Wrapper = styled.section`
   -webkit-font-smoothing: antialiased;

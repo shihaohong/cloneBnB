@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 import axios from 'axios';
 
 import App from '../App';
-import sampleData from './data/sampleData';
 
 describe('App component test suite', () => {
   // dummy scroll function, since JSDOM doesn't have it built in

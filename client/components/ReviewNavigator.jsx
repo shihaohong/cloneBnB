@@ -184,7 +184,7 @@ const ReviewNavigator = ({ currentPage, numberOfPages, handlePageChange }) => {
     } else if (currentPage === 4) {
       pageButtonsToDisplay = pageButtonsToDisplay.concat(renderPages(1, currentPage + 1));
       pageButtonsToDisplay = pageButtonsToDisplay.concat(renderTrailingEnd());
-    } else if (currentPage >= 4 && currentPage <= numberOfPages - 4) {
+    } else if (currentPage > 4 && currentPage <= numberOfPages - 4) {
       pageButtonsToDisplay = pageButtonsToDisplay.concat(renderTrailingStart());
 
       const intermediatePages = renderPages(currentPage - 1, currentPage + 1);
@@ -221,4 +221,8 @@ ReviewNavigator.propTypes = {
   handlePageChange: PropTypes.func.isRequired,
 };
 
-export default ReviewNavigator;
+export {
+  ReviewNavigator,
+  LinkItem,
+  SelectedItem,
+};

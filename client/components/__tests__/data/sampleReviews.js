@@ -1,4 +1,4 @@
-const sampleData = [{
+const sampleReviews = [{
     'id': 3,
     'accuracy': 3,
     'checkin': 4,
@@ -70,4 +70,4 @@ const sampleData = [{
   }
 ];
 
-export default sampleData;
+export default sampleReviews;
