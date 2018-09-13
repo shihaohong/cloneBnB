@@ -1,5 +1,7 @@
 # clonebnb
 
+![](http://g.recordit.co/se9ZWeptcS.gif)
+
 ### Description
 
 The reviews component for a travel accommodations service. 
