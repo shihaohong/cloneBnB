@@ -9,7 +9,7 @@ The reviews component for a travel accommodations service.
 - npm v8.12.x
 - MySQL v8.0.x
 
-* Warning: MySQL v8 introduces a new authentication plugin utilizing caching_sha256_password. Since the MySQL JavaScript driver does not support this feature yet, make sure to install MySQL to use the mysql_native_password authentication plugin instead.
+Warning: MySQL v8 introduces a new authentication plugin utilizing `caching_sha256_password`. Since the MySQL JavaScript driver does not support this feature yet, make sure to install MySQL to use the `mysql_native_password` authentication plugin instead.
 
 ### App Configuration
 
