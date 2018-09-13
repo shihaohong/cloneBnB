@@ -27,7 +27,7 @@ describe('ReviewsHeader test suite', () => {
   it('should calculate the total average star ratings correctly for one review', () => {
     const firstReviewObj = [sampleReviews[0]];
     const wrapper = shallow(<ReviewsHeader
-      reviews={fir≈stReviewObj}
+      reviews={firstReviewObj}
       widgetWidth={defaultWidgetWidth}
     />);
 
