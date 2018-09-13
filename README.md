@@ -37,7 +37,7 @@ npm run build
 npm start
 ```
 
-5. To see the fruit of your labors, go to `localhost:3000/listings/15`
+5. To see the fruit of your labors, go to `localhost:3000/listings/:id`
 
 ### Testing
 
