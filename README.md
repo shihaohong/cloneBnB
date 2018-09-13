@@ -1,4 +1,4 @@
-# cloneBnB
+# clonebnb
 
 ### Description
 
@@ -17,17 +17,17 @@ The reviews component for a travel accommodations service.
 
 1. Install project dependencies
 ```sh
-npm install`
+npm install
 ```
 
 2. Start up your MySQL server, then seed the database:
 ```sh
-npm run db:genseed`
+npm run db:genseed
 ```
 
 3. Create a client bundle
 ```sh
-npm run build`
+npm run build
 ```
 
 4. To start the server, run 
