@@ -28,12 +28,16 @@ class App extends React.Component {
       numberOfPages: 0,
     };
 
+    this.fetchReviews = this.fetchReviews.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   componentDidMount() {
     const listingId = window.location.pathname.split('/')[2];
+    this.fetchReviews(listingId);
+  }
 
+  fetchReviews(listingId) {
     axios.get(`/listing/${listingId}/reviews`)
       .then(({ data }) => {
         data.sort((reviewA, reviewB) => new Date(reviewB.date) - new Date(reviewA.date));

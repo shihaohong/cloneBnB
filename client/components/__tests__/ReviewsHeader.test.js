@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { configure, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import ReviewsHeader from '../ReviewsHeader';
 import sampleData from './data/sampleData';
-
-configure({ adapter: new Adapter() });
 
 describe('ReviewsHeader test suite', () => {
   const defaultWidgetWidth = 650;
