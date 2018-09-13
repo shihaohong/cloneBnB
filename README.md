@@ -1,17 +1,47 @@
 # cloneBnB
 
-### Introduction
+### Description
 
-This is a clone of the Airbnb reviews component. This is built to demonstrate service-oriented architecture.
+The reviews component for a travel accommodations service. 
 
-Author: Shi-Hao Hong
+### Requirements
+
+- npm v8.12.x
+- MySQL v8.0.x
+
+### App Configuration
+
+- Make sure to write a `<rootDir>/db/config.js` based off `<rootDir>/db/config.example.js`.
 
 ### Installation
 
-1. Run `npm install`
-2. To start application with mock data, run `npm run db:genseed`
-3. To transpile and bundle, run `npm run build`
-4. To start the server, run `npm start`
+1. Install project dependencies
+```sh
+npm install`
+```
+
+2. Start up your MySQL server, then seed the database:
+```sh
+npm run db:genseed`
+```
+
+3. Create a client bundle
+```sh
+npm run build`
+```
+
+4. To start the server, run 
+```sh
+npm start
+```
+
+5. To see the fruit of your labors, go to `localhost:3000/listings/15`
+
+### Testing
+
+```sh
+npm test
+```
 
 ### Mock Data
 
