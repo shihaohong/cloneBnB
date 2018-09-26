@@ -13,6 +13,21 @@ connection.connect((err) => {
   console.log(`connected as id ${connection.threadId}`);
 });
 
+const addReview = (reviewData, callback) => {
+  connection.query(`INSERT INTO 
+    reviews (user_id, listing_id, date, review_body, 
+    accuracy, communication, cleanliness, location, checkin, value) 
+    VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?)`,
+  reviewData,
+  (err) => {
+    if (err) {
+      return callback(err);
+    }
+
+    return callback(null);
+  });
+};
+
 const getReviews = (listingId, callback) => {
   // TODO: sort by most recent review first
   connection.query(`SELECT 
@@ -38,5 +53,6 @@ const getReviews = (listingId, callback) => {
 };
 
 module.exports = {
+  addReview,
   getReviews,
 };
