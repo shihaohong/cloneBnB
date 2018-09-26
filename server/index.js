@@ -9,9 +9,9 @@ app.get('*.js', (req, res, next) => {
   next();
 });
 
-app.use('/listing/:listingId', express.static('public'));
+app.use('/listings/:listingId', express.static('public'));
 
-app.get('/listing/:listingId/reviews', (req, res) => {
+app.get('/listings/:listingId/reviews', (req, res) => {
   const { listingId } = req.params;
   getReviews(listingId, (err, results) => {
     if (err) {
