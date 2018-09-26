@@ -38,7 +38,7 @@ class App extends React.Component {
   }
 
   fetchReviews(listingId) {
-    axios.get(`/listing/${listingId}/reviews`)
+    axios.get(`/listings/${listingId}/reviews`)
       .then(({ data }) => {
         data.sort((reviewA, reviewB) => new Date(reviewB.date) - new Date(reviewA.date));
 
