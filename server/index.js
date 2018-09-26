@@ -15,7 +15,6 @@ app.get('/listing/:listingId/reviews', (req, res) => {
   const { listingId } = req.params;
   getReviews(listingId, (err, results) => {
     if (err) {
-      console.log('err', err);
       return res.status(500).send();
     }
 
