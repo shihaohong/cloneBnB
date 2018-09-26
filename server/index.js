@@ -18,7 +18,7 @@ app.get('/listings/:listingId/reviews', (req, res) => {
   const { listingId } = req.params;
   getReviews(listingId, (err, results) => {
     if (err) {
-      return res.status(500).send();
+      return res.sendStatus(500);
     }
 
     res.set('Cache-Control', 'public, max-age=60');
@@ -51,12 +51,12 @@ app.post('/listings/:listingId/reviews', (req, res) => {
     value,
   ];
 
-  addReview(reviewData, (err, results) => {
+  addReview(reviewData, (err) => {
     if (err) {
-      return res.status(500).send();
+      return res.sendStatus(500);
     }
 
-    return res.status(201).send(results);
+    return res.sendStatus(201);
   });
 });
 
