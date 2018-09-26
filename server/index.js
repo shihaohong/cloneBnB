@@ -18,6 +18,7 @@ app.get('/listing/:listingId/reviews', (req, res) => {
       return res.status(500).send();
     }
 
+    res.set('Cache-Control', 'public, max-age=60');
     return res.status(200).send(results);
   });
 });
