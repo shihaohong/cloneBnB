@@ -1,4 +1,6 @@
+const CompressionPlugin = require('compression-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './client/index.jsx',
@@ -29,8 +31,14 @@ module.exports = {
       },
     ],
   },
+  mode: 'none',
+  plugins: [
+    new CompressionPlugin({
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+    }),
+  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  mode: 'none',
 };
