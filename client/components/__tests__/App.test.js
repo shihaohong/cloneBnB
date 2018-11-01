@@ -1,17 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import axios from 'axios';
 
 import App from '../App';
+import sampleReviews from './data/sampleReviews';
 
 describe('App component test suite', () => {
   // dummy scroll function, since JSDOM doesn't have it built in
   window.scroll = () => {};
 
+  beforeEach(() => {
+    // Set up some mocked out file info before each test
+    require('axios').setMockData(sampleReviews);
+  });
+
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<App />, div);
+  });
+
+  it('should call axios GET request upon invoking fetchReviews method', () => {
+    const wrapper = shallow(<App />);
+    const instance = wrapper.instance();
+    const spy = spyOn(instance, 'fetchReviews');
+
+    instance.fetchReviews(10);
+
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should properly set currentPage state on handlePageChange call', () => {
