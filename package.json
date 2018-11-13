@@ -1,7 +1,7 @@
 {
   "name": "clonebnb",
   "version": "1.0.0",
-  "description": "a clone of airbnb implemented in microservice format",
+  "description": "the reviews component of a hospitality application",
   "main": "index.js",
   "scripts": {
     "csv:generate": "node ./db/generateCsv.js",
